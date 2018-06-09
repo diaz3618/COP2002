@@ -21,7 +21,7 @@ def change(a):
                 
             elif count == 1:
                 dime = int(totalCents // 10)
-                totalCents = int( totalCents - (dime * 10))
+                totalCents = int(totalCents - (dime * 10))
                 count += 1
                 
             elif count == 2:
