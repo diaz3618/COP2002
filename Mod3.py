@@ -54,8 +54,9 @@ def main():
         change(amount)
  
         # Continue loop, or break
+        print()
         while choice.lower() != "n" or choice.lower() != "y":
-            choice = input("\nContinue? (y/n): ")
+            choice = input("Continue? (y/n): ")
             
             if choice.lower() == "n":
                 print("\nBye!")
