@@ -7,9 +7,11 @@ def to_meter(num):
     return meter
 
 def main():
-    f = 5
-    m = to_meter(f)
-    f = to_feet(m)
+    feet = 5
+    meters = to_meter(feet)
+    feet = to_feet(meters)
+    print(str(feet) + "ft -> " + str(meters) + "m")
+    print(str(meters) + "m -> " + str(feet) + "ft")
 
 if __name__ == "__main__":
     main()
