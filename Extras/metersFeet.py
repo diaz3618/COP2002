@@ -22,6 +22,10 @@ def convert(choice):
         print("\nInvalid option, try again\n\n")
         main()
 
+    else:
+        print("\nInvalid option, try again\n\n")
+        main()
+
 def main():
     welcome()
     
