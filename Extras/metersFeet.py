@@ -13,9 +13,14 @@ def convert(choice):
     if choice == "a":
         num = float(input("Enter feet: "))
         print(str(round(float(conversion_module.to_meter(num)), 2)) + " meters")
+
     elif choice == "b":
         num = float(input("Enter meters: "))
         print(str(round(float(conversion_module.to_feet(num)), 2)) + " feet")
+
+    else:
+        print("\nInvalid option, try again\n\n")
+        main()
 
 def main():
     welcome()
