@@ -2,13 +2,13 @@ import random
 
 def diceRoll(num):
     low = 1
-    high = 10
+    high = 6
     count = 0
     
     for i in range (0, 601):
         dice = random.randint(low, high)
 
-        if dice == 1:
+        if dice == num:
             count += 1
 
             # Check each roll amount
