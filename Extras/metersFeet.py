@@ -1,30 +1,42 @@
 import conversion_module
 
-def menu():
+def welcome():
     print("This program converts between feet and meters\n")
+
+def menu():
     print("Select from the two options below:\na. Feet to Meters\nb. Meters to Feet")
 
 def convert(choice):
     # Feet to meters
     if choice == "a":
         num = float(input("Enter feet: "))
-        print(str(round(float(conversion_module.to_meter(num)), 2)) + " meter")
+        print(str(round(float(conversion_module.to_meter(num)), 2)) + " meters")
     elif choice == "b":
         num = float(input("Enter meters: "))
         print(str(round(float(conversion_module.to_feet(num)), 2)) + " feet")
-    else:
-        choice = "loop"
 
 def main():
-    menu()
-    option = input("\nWhich convertion would you like? (a/b): ")
-
-    while convert(option) != "loop":
+    welcome()
+    
+    again = "y"
+    while again.lower() == "y":
+        menu()
+        option = input("\nWould you like to convert another number? (a/b): ")
         convert(option)
 
-        if convert(option.lower()) != "a" or convert(option.lower()) != "b":
-            print("\nInvalid option")
-            break
+
+        while again.lower() != "n" or again.lower() != "y":
+            again = input("\nRun again? (y/n): ")
+            if again.lower() == "n":
+                print("\nThanks, bye!")
+                break
+
+            elif again.lower() == "y":
+                print()
+                break
+            elif again.lower() != "n" or again.lower() != "y":
+                print("please enter y or n")
+
 
     
 if __name__ == "__main__":
