@@ -8,5 +8,4 @@ def whileLoop(question, choice):
 
         elif choice.lower() == "y":
             break
-        elif choice.lower() != "n" or choice.lower() != "y":
-            print("please enter y or n")
+        print("please enter y or n")
