@@ -1,5 +1,9 @@
 import conversion_module
 
+def menu():
+    print("This program converts between feet and meters\n")
+    print("Select from the two options below:\na. Feet to Meters\nb. Meters to Feet")
+
 def convert(choice):
     # Feet to meters
     if choice == "a":
@@ -12,8 +16,7 @@ def convert(choice):
         choice = "loop"
 
 def main():
-    print("This program converts between feet and meters\n")
-    print("Select from the two options below:\na. Feet to Meters\nb. Meters to Feet")
+    menu()
     option = input("\nWhich convertion would you like? (a/b): ")
 
     while convert(option) != "loop":
