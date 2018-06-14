@@ -20,7 +20,7 @@ def convert(choice):
 
     else:
         print("\nInvalid option, try again\n\n")
-        main()
+        main(
 
 def main():
     welcome()
