@@ -4,7 +4,9 @@ def welcome():
     print("This program converts between feet and meters\n")
 
 def menu():
-    print("Select from the two options below:\na. Feet to Meters\nb. Meters to Feet")
+    print("Select from the two options below:")
+    print("a. Feet to Meters")
+    print("b. Meters to Feet")
 
 def convert(choice):
     # Feet to meters
