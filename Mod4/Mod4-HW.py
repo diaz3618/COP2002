@@ -58,12 +58,9 @@ def main():
             if choice.lower() == "n":
                 print("\nBye!")
                 break
-            #elif choice.lower() != "y" or choice.lower() != "n":
-                #print("please enter y or n")
             elif choice.lower() == "y":
                 break
-            elif choice.lower() != "n" or choice.lower() != "y":
-                print("please enter y or n")
+            print("please enter y or n")
 
 
 if __name__ == "__main__":
