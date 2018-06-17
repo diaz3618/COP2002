@@ -1,6 +1,6 @@
 import random
 
-def IO():
+def maxInput():
 	max = int(input(("Enter the upper limit for the range of numbers: ")))
 	print("I\'m thinking of a number between 1 and " + str(max) + "\n")
 	
@@ -32,7 +32,7 @@ def game():
 	print("Guess the number!\n")
 	choice = "y"
 	while choice.lower() == "y":
-		max = IO()  # Max number (1, max)
+		max = maxInput()  # Max number (1, max)
 		guess(max)
 		
 		# Continue loop, or break
