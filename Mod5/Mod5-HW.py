@@ -14,18 +14,15 @@ def guess(max):
 	
 	while True:
 		guess = int(input("Your guess: "))
-		
 		# Guessed correctly
 		if guess == num:
 			count += 1
 			print("You guessed it in " + str(count) + " tries.")
 			return
-		
 		# Guessed num is too low
 		elif guess < num:
 			print("Too low.")
 			count += 1
-			
 		# Guessed num is too high
 		elif guess > num:
 			print("Too high.")
