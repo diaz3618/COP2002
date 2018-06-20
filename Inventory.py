@@ -75,7 +75,7 @@ def openFile():
 
 def w_or_a():
         # Write new or append to file
-        fileOption = input("(w)Write new file, (a)Append to file?: ")
+        fileOption = input("(w)Write new file, (a)Append to file, (b)Back?: ")
 
         while fileOption.lower() != "w" or fileOption.lower() != "a":
                 if fileOption.lower() == "w":
