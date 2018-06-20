@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
 def main():
-        w_or_a()
-        inv()
+        menu()
         
         # Continue loop, or break
         again = "y"
@@ -18,6 +17,20 @@ def main():
                 write("", True)
             print("[-] Invalid choice...\n")
 
+def menu():
+        print("Inventory app\n\nChoose an option")
+        
+        option = str(input("(r)Read file, (a)Add to file: "))
+        while option.lower() != "r" or option.lower() != "a":
+            print()
+            if option.lower() == "r":
+                openFile()
+                option = str(input("(r)Read file, (a)Add to file: "))
+            elif option.lower() == "a":
+                w_or_a()
+                inv()
+            print("[-] Invalid choice...\n")
+            
 def inv():
         # Initialize
         total = 0
@@ -43,16 +56,22 @@ def inv():
                 print("\tSKU: " + sku)
                 print("\tTotal: " + str(total))
                 
-def mult(length, amnt):
-        total = length * amnt
-        return total
 
 def write(info, writeNew = True):
         if writeNew == False:
-                f = open("list.txt","w+")
-        f = open("list.txt","a+")
+                f = open("list.txt", "w+")
+        f = open("list.txt", "a+")
         f.write(info)
         f.close()
+
+def openFile():
+        f = open("list.txt", "r")
+
+        if f.mode == "r":
+                listFile = f.read()
+                print(listFile)
+        
+        
 
 def w_or_a():
         # Write new or append to file
@@ -65,9 +84,16 @@ def w_or_a():
                 elif fileOption.lower() == "a":
                         write("")
                         break
+                elif fileOption.lower() == "b":
+                        menu()
+                        break
                 else:
                         print("[-] Invalid choice...\n")
                         fileOption = input("(w)Write new file, (a)Append to file?: ")
+
+def mult(length, amnt):
+        total = length * amnt
+        return total
 	
 if __name__ == "__main__":
   main()
