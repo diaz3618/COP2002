@@ -1,13 +1,9 @@
 import random as r
-
-def genRand(max):
-    randNum = r.randint(1, max)
-    return randNum
+MAX = 10
 
 def game():
-    max = 10
-    print("I\'m thinking of a number from 1 to " + str(max))
-    num = genRand(max)
+    print("I\'m thinking of a number from 1 to " + str(MAX) + "\n")
+    num = r.randint(1, MAX)
     count = 0
     
     while True:
@@ -25,6 +21,7 @@ def game():
             return False
     
 def main():
+    print("Guess the number!\n")
     choice = "y"
     while choice.lower() == "y":
         game()
