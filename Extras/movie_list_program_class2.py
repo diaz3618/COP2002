@@ -13,11 +13,7 @@ def display_menu():
 def list(movie_list):
     i = 1
     for row in movie_list:
-<<<<<<< HEAD
         print(str(i) + ". " + row[0] + " " + "( "+ str(row[1]) + " ) " + " @   " + str(row[2]))  """ Added (  + "( "+ str(row[1]) + " ) " + " @   " + str(row[2])  ) """
-=======
-        print(str(i) + ". " + row[0] + " " + "( "+ str(row[1]) + " ) " + " @   " + str(row[2]))  ## Added (  + "( "+ str(row[1]) + " ) " + " @   " + str(row[2])  )
->>>>>>> master
         i += 1
     print()
 
