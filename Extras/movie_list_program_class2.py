@@ -13,7 +13,7 @@ def display_menu():
 def list(movie_list):
     i = 1
     for row in movie_list:
-        print(str(i) + ". " + row[0] + " " + "( "+ str(row[1]) + " ) " + " @   " + str(row[2]))  """ Added (  + "( "+ str(row[1]) + " ) " + " @   " + str(row[2])  ) """
+        print(str(i) + ". " + row[0] + " " + "( "+ str(row[1]) + " ) " + " @   " + str(row[2]))  ## Added [minus ()] (  + "( "+ str(row[1]) + " ) " + " @   " + str(row[2])  )
         i += 1
     print()
 
@@ -39,7 +39,9 @@ def delete(movie_list):
     
 
 def main():
-    movie_list = [["Monty Python and the Holy Grail", 1975, 9.95], ["On the Waterfront", 1954, 5.59], ["Cat on a Hot Tin Roof", 1958, 7.95]]
+    movie_list = [["Monty Python and the Holy Grail", 1975, 9.95],
+                  ["On the Waterfront", 1954, 5.59],
+                  ["Cat on a Hot Tin Roof", 1958, 7.95]]
     display_menu()
     while True:        
         command = input("Command: ")
