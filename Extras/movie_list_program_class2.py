@@ -7,6 +7,8 @@ def display_menu():
     print("list - List all movies")
     print("add - Add a movie")
     print("delete - Delete a movie")
+    print("find - Find a movie by year")
+    print("help - Print this list")
     print("exit - Exit program")
     print()
 
@@ -27,7 +29,6 @@ def add(movie_list):
     movie.append(price) ## Added
     movie_list.append(movie)
     print(movie[0] + " was added to the list.\n")
-    
 
 def delete(movie_list):
     movie_number = int(input("Number: "))
@@ -36,12 +37,21 @@ def delete(movie_list):
     else:
         movie = movie_list.pop(movie_number-1)
         print(movie, " was deleted.\n")
+
+def find(movie_list):
+    year = int(input("Year: "))
+    count = 0
     
+    for i in range(0, len(movie_list)):
+        if movie_list[count][1] == year:
+            print(movie_list[count][0], " was released in ", year)
+        count += 1
 
 def main():
     movie_list = [["Monty Python and the Holy Grail", 1975, 9.95],
                   ["On the Waterfront", 1954, 5.59],
                   ["Cat on a Hot Tin Roof", 1958, 7.95]]
+
     display_menu()
     while True:        
         command = input("Command: ")
@@ -53,6 +63,11 @@ def main():
             delete(movie_list)
         elif command.lower() == "exit":
             break
+        elif command.lower() == "find":
+            find(movie_list)
+        elif command.lower() == "help":
+            print()
+            display_menu()
         else:
             print("Invalid command. Please try again.")
     print("Bye!")
