@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+'''
+Daniel Diaz Santiago
+COP2002.002
+Module 6 Homework - Wizard Inventory program
+'''
 
 def main():
     print("The Wizard Inventory program\n")
