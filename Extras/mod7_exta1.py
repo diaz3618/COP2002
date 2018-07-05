@@ -69,7 +69,6 @@ def walk(inventory):
         else:
             print("\nInvalid option")
             break
-        
  
 def show(inventory):
     for i in range(len(inventory)):
@@ -88,7 +87,7 @@ def display_title():
 
 def display_menu():
     print("COMMAND MENU")
-    print("walk - Walk down the path"       # Walk to find items
+    print("walk - Walk down the path")       # Walk to find items
     print("show - Show all items")          # Show items
     print("drop - Drop an item")            # Remove item
     print("exit - Exit program\n")          # Exit
