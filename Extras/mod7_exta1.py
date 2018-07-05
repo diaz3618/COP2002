@@ -5,41 +5,6 @@ import random
 ITEMS_FILENAME = "wizard_all_items.txt"
 INVENTORY_FILENAME = "wizard_inventory.txt"
 
-def read_inventory():
-    pass
-
-def read_items():
-    pass
- 
-def write_inventory(inventory):
-    pass
- 
-def walk(inventory):
-    print("While walking down a path, you see a ")
- 
-def show(inventory):
-    pass
-
-def drop_item(inventory):
-    pass
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def main():
     display_title()
     display_menu()
@@ -59,16 +24,74 @@ def main():
             print("Not a valid command. Please try again.\n")
     print("Bye!")
 
+def read_inventory():
+    items = []
+    with open(INVENTORY_FILENAME) as file:
+        for line in file:
+            line = line.replace("\n", "")
+            items.append(line)
+    return items
+
+def write_inventory(inventory):
+    with open(INVENTORY_FILENAME, "w") as file:
+        for inv in inventory:
+            file.write(inv + "\n")  
+
+def read_items():
+    items = []
+    with open(ITEMS_FILENAME) as file:
+        for line in file:
+            line = line.replace("\n", "")
+            items.append(line)
+    return items
+ 
+def walk(inventory):
+    items = read_items()
+    randItem = random.randint(0, len(items) - 1)
+    invSize = len(inventory)
+    max = 4
+    
+    while True:
+        print("While walking down a path, you see a " + items[randItem])
+        grab = str(input("Do you want to grab it? (y/n): "))
+
+        if grab.lower() == "y":
+            if invSize < max:
+                inventory.append(items[randItem])
+                print("You picked up " + items[randItem] + "\n")
+                break
+            else:
+                print("You can't carry any more items. Drop something first.\n")
+                break
+            
+        elif grab.lower() == "n":
+            break
+        else:
+            print("\nInvalid option")
+            break
+        
+ 
+def show(inventory):
+    for i in range(len(inventory)):
+        inv = inventory[i]
+        print(str(i+1) + ". " + inv)
+    print()
+
+def drop_item(inventory):
+    index = int(input("Number: "))   
+    inv = inventory.pop(index - 1)
+    write_inventory(inventory)
+    print(inv + " was deleted.\n")
+
 def display_title():
     print("The Wizard Inventory program\n")
 
 def display_menu():
     print("COMMAND MENU")
-    print("show - Show all items")  # Show items
-    print("grab - Grab an item")    # Add items
-    print("edit - Edit an item")    # Update item name
-    print("drop - Drop an item")    # Remove item
-    print("exit - Exit program\n")  # Exit
+    print("walk - Walk down the path"       # Walk to find items
+    print("show - Show all items")          # Show items
+    print("drop - Drop an item")            # Remove item
+    print("exit - Exit program\n")          # Exit
 
 if __name__ == "__main__":
     main()
