@@ -5,21 +5,19 @@ import csv
 FILENAME = "monthly_sales.csv"
 
 def write_sales(sales):
-
-    
+    pass
 
 def read_sales():
-
+    pass
 
 def view_monthly_sales(sales):
-
+    pass
 
 def view_yearly_summary(sales):
-
+    pass
 
 def edit(sales):
-   
-   
+    pass
 
 def display_menu():
     print("COMMAND MENU")
@@ -32,8 +30,6 @@ def display_menu():
 def display_title():
     print("Monthly Sales program")
     print()
-
-
 
 def main():
     display_title()

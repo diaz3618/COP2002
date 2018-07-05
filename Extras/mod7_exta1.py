@@ -9,7 +9,7 @@ def main():
     display_title()
     display_menu()
 
-    inventory = read_inventory()
+    inventory = _read(INVENTORY_FILENAME)
     while True:        
         command = input("Command: ")        
         if command == "walk":
@@ -23,7 +23,20 @@ def main():
         else:
             print("Not a valid command. Please try again.\n")
     print("Bye!")
+    
+"""
+read_inventory() and read_items() do the same thing,
+why not make one function that can read either one?
+"""
+def _read(filename):
+    items = []
+    with open(filename) as file:
+        for line in file:
+            line = line.replace("\n", "")
+            items.append(line)
+    return items
 
+"""
 def read_inventory():
     items = []
     with open(INVENTORY_FILENAME) as file:
@@ -32,11 +45,6 @@ def read_inventory():
             items.append(line)
     return items
 
-def write_inventory(inventory):
-    with open(INVENTORY_FILENAME, "w") as file:
-        for inv in inventory:
-            file.write(inv + "\n")  
-
 def read_items():
     items = []
     with open(ITEMS_FILENAME) as file:
@@ -44,9 +52,15 @@ def read_items():
             line = line.replace("\n", "")
             items.append(line)
     return items
+"""
+
+def write_inventory(inventory):
+    with open(INVENTORY_FILENAME, "w") as file:
+        for inv in inventory:
+            file.write(inv + "\n")  
  
 def walk(inventory):
-    items = read_items()
+    items = _read(ITEMS_FILENAME)
     randItem = random.randint(0, len(items) - 1)
     invSize = len(inventory)
     max = 4
