@@ -5,16 +5,34 @@ import csv
 FILENAME = "monthly_sales.csv"
 
 def write_sales(sales):
-    pass
+    with open(FILENAME, "w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerows(movies)
 
 def read_sales():
-    pass
+    sales = []
+    with open(FILENAME, newline="") as file:
+        reader = csv.reader(file)
+        for row in reader:
+            sales.append(row)
+    return sales
 
 def view_monthly_sales(sales):
-    pass
+    sales = read_sales()
+    for i in range(0, len(sales)):
+        print(sales[i][0] + " - " + str(sales[i][1]))
+    print()
 
 def view_yearly_summary(sales):
-    pass
+    _sales = read_sales()
+    count = 0
+    total = 0
+    for i in range(0, len(_sales)):
+        total += int(_sales[i][1])
+
+    print("Yearly total:\t\t" + str(total))
+    print("Monthly average:\t" + str(total / len(sales)))
+    print()
 
 def edit(sales):
     pass
