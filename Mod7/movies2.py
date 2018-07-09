@@ -6,7 +6,7 @@ FILENAME = "movies.csv"
 def write_movies(movies):
     with open(FILENAME, "w", newline="") as file:
         writer = csv.writer(file)
-        writer.writerows(movies)   
+        writer.writerows(movies)
 
 def read_movies():
     movies = []
