@@ -30,12 +30,14 @@ why not make one function that can read either one?
 """
 def _read(filename):
     items = []
-    with open(filename) as file:
+    with open(filename) as file:  ## **Using "with" automatically closes the file.
         for line in file:
             line = line.replace("\n", "")
             items.append(line)
     return items
 
+
+# COMMENTED OUT
 """
 def read_inventory():
     items = []
@@ -53,6 +55,8 @@ def read_items():
             items.append(line)
     return items
 """
+## COMMENTED OUT
+
 
 def write_inventory(inventory):
     with open(INVENTORY_FILENAME, "w") as file:
