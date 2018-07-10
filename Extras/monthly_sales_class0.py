@@ -18,24 +18,39 @@ def read_sales():
     return sales
 
 def view_monthly_sales(sales):
+    # [i][0] == Months
     sales = read_sales()
     for i in range(0, len(sales)):
         print(sales[i][0] + " - " + str(sales[i][1]))
     print()
 
 def view_yearly_summary(sales):
-    _sales = read_sales()
-    count = 0
+    # [i][1] == Monthly # amount
     total = 0
-    for i in range(0, len(_sales)):
-        total += int(_sales[i][1])
+    for i in range(0, len(sales)):
+        total += int(sales[i][1])
 
     print("Yearly total:\t\t" + str(total))
     print("Monthly average:\t" + str(total / len(sales)))
     print()
 
 def edit(sales):
-    pass
+    i = 0
+    print(sales[i][1])
+    month = str(input("Three-letter Month: "))
+    sales_amount = str(input("Sales Amount: "))
+
+    
+    while True:
+        if  sales[i][0] == month:
+            print(sales[i][0] + "\tFound it!")
+            sales.remove(sales[i])
+            sales.insert(i, sales_amount)
+            print("Sales amount for " + str(sales[i][0]) + " was modified.")
+            break
+        else:
+            print(sales[i][0] + "\tNot that one!")
+            i += 1
 
 def display_menu():
     print("COMMAND MENU")
