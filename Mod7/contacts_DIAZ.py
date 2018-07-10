@@ -59,12 +59,14 @@ def list(contacts):
 ## View X contact
 def view(contacts):
     name = str(input("Contact name: "))
-
-    for i in range(0, len(contacts)):
-        if name.lower() == contacts[i][0].lower():
-            ## names = [i][0], emails = [i][1], phone numbers = [i][2]
-            print("\nName: " + contacts[i][0] + "\nEmail: " + contacts[i][1] + "\nPhone: " + contacts[i][2])
+    j = 0
+    print(contacts[1][0])
+    while j < len(contacts):
+        if name.lower() == contacts[j][0].lower():
+            print("\nName: " + contacts[j][0] + "\nEmail: " + contacts[j][1] + "\nPhone: " + contacts[j][2])
             break
+        elif name.lower() != contacts[j][0].lower():
+            j += 1
         else:
             print("Contact \"" + name + "\" not found.")
             break
