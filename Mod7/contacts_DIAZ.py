@@ -1,5 +1,11 @@
+#!/usr/bin/env python3
 import csv
 FILENAME = "contacts.csv"
+'''
+Daniel Diaz Santiago
+COP2002.002
+Module 7 Homework
+'''
 
 def main():
     print("Contact Manager\n")
@@ -80,9 +86,12 @@ def add(contacts):
     email = str(input("Email: "))
     phone = str(input("Phone: "))
 
+    ## Append to contact variable
     contact.append(name)
     contact.append(email)
     contact.append(phone)
+
+    ## Append contact variable to contacts variable
     contacts.append(contact)
     
     # Write data to "contacts.csv"
