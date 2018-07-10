@@ -36,7 +36,6 @@ def view_yearly_summary(sales):
 
 def edit(sales):
     i = 0
-    print(sales[i][1])
     month = str(input("Three-letter Month: "))
     sales_amount = str(input("Sales Amount: "))
 
@@ -44,13 +43,40 @@ def edit(sales):
     while True:
         if  sales[i][0] == month:
             print(sales[i][0] + "\tFound it!")
-            sales.remove(sales[i])
+            sales.remove(sales[i][1])
             sales.insert(i, sales_amount)
-            print("Sales amount for " + str(sales[i][0]) + " was modified.")
+            if sales[i][1] == sales_amount:
+                print("Sales amount for " + str(sales[i][0]) + " was modified.")
+            else:
+                print("Value was not changed\n")
             break
         else:
             print(sales[i][0] + "\tNot that one!")
             i += 1
+
+## WORK IN PROGESS
+def edit2(sales):
+    sales_list = []
+    i = 0
+    month = str(input("Three-letter Month: "))
+    sales_amount = str(input("Sales Amount: "))
+
+    while True:
+        if sales[i][0].lower() == month.lower():
+            print(sales[i][0] + "\tFound it!")
+            sales.remove(sales[i])
+            sales.insert(i, month)
+            sales.insert(i, sales_amount)
+            
+        if sales[i][1] == sales_amount:
+                print("Sales amount for " + str(sales[i][0]) + " was modified.")
+            else:
+                print("Value was not changed\n")
+            break
+        else:
+            print(sales[i][0] + "\tNot that one!")
+            i += 1
+            
 
 def display_menu():
     print("COMMAND MENU")
@@ -75,7 +101,7 @@ def main():
         elif command == "yearly":
             view_yearly_summary(sales)
         elif command == "edit":
-            edit(sales)
+            edit2(sales)
         elif command == "exit":
             break
         else:
