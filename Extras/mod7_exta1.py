@@ -37,7 +37,7 @@ def _read(filename):
     return items
 
 
-# COMMENTED OUT
+## COMMENTED OUT
 """
 def read_inventory():
     items = []
