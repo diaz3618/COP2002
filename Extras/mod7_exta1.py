@@ -95,10 +95,15 @@ def show(inventory):
     print()
 
 def drop_item(inventory):
-    index = int(input("Number: "))   
-    inv = inventory.pop(index - 1)
-    write_inventory(inventory)
-    print(inv + " was deleted.\n")
+    num = int(input("Number: "))
+    index = num - 1
+
+    if num > len(inventory) or num <= 0:
+        print("Invalid number, currently holding " + str(len(inventory)) + " items.")
+    else:
+        inv = inventory.pop(index)
+        write_inventory(inventory)
+        print(inv + " was deleted.\n")
 
 def display_title():
     print("The Wizard Inventory program\n")
