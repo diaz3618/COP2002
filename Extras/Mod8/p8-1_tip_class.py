@@ -4,7 +4,7 @@ def get_cost():
     while True:
         try:
             cost = float(input("Cost of meal: "))
-            if cost > 0:
+            if cost >= 0:
                 return cost
             else:
                 print("Must be greater than 0. Please try again.")
@@ -14,8 +14,11 @@ def get_cost():
 def get_tip_percent():
     while True:
         try:
-            percent = int(input("Tip percent: "))
-            return percent
+            tip = int(input("Tip percent: "))
+            if tip >= 0:
+                return tip
+            else:
+                print("Must be greater than 0. Please try again.")
         except ValueError:
             print("Must be valid integer. Please try again.")
             

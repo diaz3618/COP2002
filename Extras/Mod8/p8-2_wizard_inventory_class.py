@@ -18,29 +18,56 @@ def display_menu():
     print()
 
 def read_inventory():
-    inventory = []
-    with open(INVENTORY_FILENAME) as file:
-        for line in file:
-            line = line.replace("\n", "")
-            inventory.append(line)
-    return inventory
+    try:
+        inventory = []
+        with open(INVENTORY_FILENAME) as file:
+            for line in file:
+                line = line.replace("\n", "")
+                inventory.append(line)
+        return inventory
+    except FileNotFoundError as notFound:
+        print("Could not find " + INVENTORY_FILENAME+ " file.")
+        create = str(input("Create " + INVENTORY_FILENAME + " file? (y/any key): "))
+        if create.lower() == "y":
+            write_inventory(inventory)
+        else:
+            print("Program closing.")
+            exit()
+    ## Failsafe exception
+    except Exception as e:
+        print(type(e), e)
+        print("Program closing.")
+        exit()
 
 
 def read_items():
     items = []
-    
-    with open(ITEMS_FILENAME) as file:
-        for line in file:
-            line = line.replace("\n", "")
-            items.append(line)
-    return items
+    try:
+        with open(ITEMS_FILENAME) as file:
+            for line in file:
+                line = line.replace("\n", "")
+                items.append(line)
+        return items
+    except FileNotFoundError as notFound:
+        print("Could not find " + ITEMS_FILENAME+ " file.")
+        print("Program closing.")
+        exit()
+    ## Failsafe exception
+    except Exception as e:
+        print(type(e), e)
+        print("Program closing.")
+        exit()
 
  
 def write_inventory(inventory):
-    with open(INVENTORY_FILENAME, "w") as file:
-        for row in inventory:
-            file.write(row + "\n")
-
+    try:
+        with open(INVENTORY_FILENAME, "w") as file:
+            for row in inventory:
+                file.write(row + "\n")
+    ## Failsafe exception
+    except Exception as e:
+        print(type(e), e)
+        exit_program()
  
 def walk(inventory):
     randItems = read_items()
@@ -64,15 +91,20 @@ def show(inventory):
 
         
 def drop_item(inventory):
-    index = int(input("Number: "))
+    while True:
+        try:
+            index = int(input("Number: "))
 
-    if index < 1 or index > len(inventory):
-        print("Invalid number. Please try again.")
-    else:
-        item = inventory.pop(index-1)
-        write_inventory(inventory)
-        print("You dropped " + item + ". ")
-        print()
+            if index < 1 or index > len(inventory):
+                print("Invalid number. Please try again.")
+            else:
+                item = inventory.pop(index-1)
+                write_inventory(inventory)
+                print("You dropped " + item + ". ")
+                print()
+                break
+        except ValueError:
+            print("Value entered must be integer.")
 
 
 def main():
