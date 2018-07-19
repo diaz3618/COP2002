@@ -1,23 +1,48 @@
 from locale import *
+from decimal import Decimal
+import sys
 setlocale(LC_ALL, '')
 
 def _input():
-    print("Interest Calculator\n")
-
     while True:
         try:
-            amount = float(input("Enter loan amount: "))
-            rate = float(input("Enter interest rate: "))
+            amount = Decimal(input("Enter loan amount: "))
+            rate = Decimal(input("Enter interest rate: "))
             rate = rate / 100
-            interest_amount = 
+            interest_amount = amount * rate
+            line = "{:16} {:>16}"
 
-            print("{:10} {:>15}".format("Loan amount:", currency(amount)))
-            print("{:10} {:13.3%}".format("Interest rate:", rate))
-            print("{:10} {:>15}".format("Interest amount:", currency(amount)))
+            print(line.format("Loan amount:", currency(amount)))
+            print("{:16} {:16.3%}".format("Interest rate:", rate))
+            print(line.format("Interest amount:", currency(interest_amount)))
+            print()
+            break
 
         except ValueError:
             print("Value error")
+        except Exception as e:
+            print(type(e), e)
+            print("\nEncountered error, terminating program...")
+            sys.exit()
 def main():
-    _input()
+    try:
+        print("Interest Calculator\n")
 
-main()
+        choice = "y"
+        while choice.lower() == "y":
+            _input()
+
+            choice = str(input("Continue? (y/n): "))
+            if choice.lower() == "n":
+                break
+            elif choice.lower() == "y":
+                pass
+            else:
+                return False
+    except Exception as e:
+        print(type(e), e)
+        print("\nEncountered error, terminating program...")
+        sys.exit()
+
+if __name__ == "__main__":
+    main()
