@@ -4,6 +4,7 @@ from decimal import Decimal
 import locale as lc
 
 def main():
+    print("Monthly Payment Calculator")
     menu()
 
 def menu():
@@ -17,43 +18,46 @@ def menu():
     while True:
         try:
             if again.lower() == "y":
-                print("DATA ENTRY")
+                print("\nDATA ENTRY")
                 
                 loan_amount = Decimal(input(line.format("Loan amount:")))
                 yearly_interest = Decimal(input(line.format("Yearly interest rate:")))
                 years = Decimal(input(line.format("Years")))
+                if loan_amount >= 0 or yealy_interest >= 0 or years >= 0:
+                    ## Months
+                    months = years * 12
 
-                # calculate and quantize
-                loan_amount = loan_amount.quantize(Decimal("1.12"))
-                yearly_interest = yearly_interest.quantize(Decimal("1.123"))
+                    ## Calculate and quantize
+                    loan_amount = loan_amount.quantize(Decimal("1.12"))
+                    yearly_interest = yearly_interest.quantize(Decimal("1.123"))
 
-                # Payment formula
-                monthly_interest_rate = (((yearly_interest / 100) * 12) * loan_amount) * 100
-                months = years / 12
+                    ## Payment formula
+                    monthly_interest_rate = yearly_interest / 1200
                 
-                payment = loan_amount * monthly_interest_rate / (1 -1 / \
-                            (1 + monthly_interest_rate) ** months)
-                payment = payment.quantize(Decimal("1.12"))
+                    payment = loan_amount * monthly_interest_rate / (1 -1 / \
+                                (1 + monthly_interest_rate) ** months)
+                    payment = payment.quantize(Decimal("1.12"))
 
-                # Print results
-                results(loan_amount, yearly_interest, years, payment)
-                again = str(input("Continue? (y/n): "))
-                print()
+
+                    ## Print results
+                    results(loan_amount, yearly_interest, years, payment)
+
+                    ## Continue while loop?
+                    again = str(input("Continue? (y/n): "))
+                else:
+                    print("Invalid input.\n")
+                
+                
             elif again.lower() == "n":
                 print("\nBye!")
                 return False
+            
             else:
                 print("Invalid option\n")
                 again = str(input("Continue? (y/n): "))
 
-
-    
-##        except Exception as e:
-##            print(type(e), e)
-##            print("Program closing.")
-##            exit()
-        except ValueError:
-            print("test")
+        except Exception as e:
+            print("Invalid input.\n")
 
 def results(loan_amount, yearly_interest, years, payment):
     line = "{:16} {:>16}"
