@@ -13,11 +13,13 @@ def IO():
     while again.lower() == "y":
         try:
             print("\nDATA ENTRY")
-                
+
+            ## Input
             loan_amount = Decimal(input(line.format("Loan amount:")))
             yearly_interest = Decimal(input(line.format("Yearly interest rate:")))
             years = Decimal(input(line.format("Years:")))
-            
+
+            ## Calculate monthly payments
             calculate(loan_amount, yearly_interest, years)
 
             ## Run again?
