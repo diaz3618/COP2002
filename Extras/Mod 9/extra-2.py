@@ -14,18 +14,9 @@ def main():
 
     list = []
     for x in range(0,len(sales)):
-        print(str(sales[0][x]) + "\t")
+        print(str(sales[0][x]))
 
-    """
-    while True:
-        for i in range(0, len(sales)):
-            if i == len(sales):
-                for j in range(0, len(sales)):
-                    print(head_line.format(str(counter+1), str(sales[i][j]), str(sales[j][i]), str(sales[j][i]), str(sales[j][i])))
-        counter += 1
-        if counter == 4:
-            break
-    """
+    
     
 
 main()
